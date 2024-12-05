@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+</head>
+<body >
+
+<h3><center>JavaScript Click Counter</center></h3>
+<div>
+    <center><h3 id="compteur">0</h3></center>
+</div>
+<center>
+    <div id="demo" >
+        Cliquer
+    </div>
+    <button id="reset">
+        Reset
+    </button>
+</center>
+
+<script>
+    let counterVal = 0;
+
+    // Fonction pour mettre à jour l'affichage
+    function updateDisplay(val) {
+        document.getElementById('compteur').innerHTML = val;
+    }
+
+    // Fonction de gestion du clic sur "Cliquer"
+    function toucheClick() {
+        counterVal++;
+        updateDisplay(counterVal);
+    }
+
+    // Fonction pour réinitialiser le compteur
+    function resetClick() {
+        counterVal = 0;
+        updateDisplay(counterVal);
+    }
+
+    // Attacher les événements aux éléments
+    document.getElementById('demo').addEventListener('click', toucheClick);
+    document.getElementById('reset').addEventListener('click', resetClick);
+</script>
+
+</body>
+</html>
