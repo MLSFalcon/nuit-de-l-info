@@ -4,6 +4,12 @@
 </form>
 
 <?php
+if (isset($_GET['Ajout'])) {
+ echo $_GET['Ajout'];
+}
+?>
+
+<?php
 if (isset($_POST['ajouter'])){
     ?>
     <form action=".././gestion/gestionAjoutDePoint.php" method="post">
