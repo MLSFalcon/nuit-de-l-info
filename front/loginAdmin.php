@@ -16,16 +16,16 @@ if (isset($_GET['erreur'])){
 <table>
 
 <h3>login
- <input type="login" name="login" ></h3>
+ <input type="login" name="login" required></h3>
     <h3>mdp
-        <input type="mdp" name="mdp"></h3>
+        <input type="password" name="mdp" required></h3>
         <tr>
             <td>
          <input class="deh" type="submit" value="connexion">
             </td>
         </tr>
-       <a href=""><input class="deA" type="submit" value="utilisateur"></a>
 </table>
 </form>
+<a href="index.html"><input class="deA" type="submit" value="utilisateur"></a>
 </body>
 </html>
