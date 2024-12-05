@@ -90,7 +90,7 @@ if (isset($_POST['modifier'])){
             </tr>
             <tr>
                 <td><label for="resume">resume : </label></td>
-                <td><textarea name="resume" id="resume" ><?=$info['resume']?></textarea> </td>
+                <td><textarea name="resume" id="resume" rows="20px" cols="100px" ><?=$info['resume']?></textarea> </td>
             </tr>
             <tr>
                 <td><input type="submit" name="modifier" value="confirmer"></td>
@@ -98,7 +98,9 @@ if (isset($_POST['modifier'])){
         </form>
     </table>
 <?php } ?>
-
+<hr>
+<a href="../gestion/gestionDeconnexion.php">Se déconnecte</a>
+<hr>
 </body>
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
