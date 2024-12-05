@@ -10,7 +10,9 @@ h2{
 h3{
     text-align: center;
 }
-
+* {
+    font-family: sans-serif;
+}
 html{
     background-color: lightblue;
 }
