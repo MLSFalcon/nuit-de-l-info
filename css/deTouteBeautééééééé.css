@@ -1,0 +1,27 @@
+body {
+    background-color: white;
+    width: 500px;
+    margin: auto;
+    padding: 20px;
+    border-radius: 30px;
+}
+*{
+    font-family: sans-serif;
+
+}
+html {
+margin: 250px auto;
+    text-align: center;
+    background-color: blanchedalmond;
+}
+table{
+
+    margin: auto;
+
+}
+h2{
+    text-align: center;
+}
+h3{
+    text-align: center;
+}
