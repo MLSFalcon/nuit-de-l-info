@@ -7,7 +7,12 @@
 <link rel="stylesheet" href="../css/admin.css">
 
 <body>
-<form action="index.html" method="post">
+<?php
+if (isset($_GET['erreur'])){
+    echo '<p style="color:red" align="center">'.$_GET['erreur'];
+}
+?>
+<form action="../gestion/gestionConnexionAdmin.php" method="post">
 <table>
 
 <h3>login
