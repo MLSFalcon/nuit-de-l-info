@@ -22,10 +22,15 @@
         <form action="../gestion/gestionUtilisateur.php" method="post">
             <div class="mb-3">
                 <label for="pseudo_user" class="form-label">Pseudo</label>
-                <input type="text" name="pseudo_user" id="pseudo_user" class="form-control">
+                <input type="text" name="pseudo_user" id="pseudo_user" required class="form-control">
             </div>
             <div class="d-grid gap-2">
                 <button type="submit" name="Jouer" class="btn btn-primary">Jouer</button>
+
+            </div>
+        </form>
+        <form action="loginAdmin.php" method="post">
+            <div class="d-grid gap-2">
                 <button type="submit" name="admin" class="btn btn-secondary">Connexion admin</button>
             </div>
         </form>
