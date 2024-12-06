@@ -25,17 +25,14 @@ session_start();
     </div>
 
     <div class="col-sm-3">
-        <div id="demo" onclick="if (counterVal%10 === 0){reload(truc)}">
-            Cliquer
+
+        <div id="demo" class="text-center"  onclick="if (counterVal%10 === 0){reload(truc)}">
+            Cliquez n'importe où sur l'écran
         </div>
-        <button id="reset">
-            Reset
-        </button>
-
-
-
-
-
+        <div>
+            <center><h3 class="container-fluid"  id="compteur">0</h3></center>
+        </div>
+        <hr>
     </div>
 </div>
 
@@ -51,7 +48,6 @@ session_start();
             integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
             crossorigin="anonymous"></script>
     <script>
-
         var map = L.map('map').setView([46.52302030397954, 6.611348944330389], 3);
 
         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -82,7 +78,7 @@ session_start();
         let counterVal = <?=$_SESSION["nb_clique"]?>;
         // Fonction pour mettre à jour l'affichage
         function updateDisplay(val) {
-            //document.getElementById('compteur').innerHTML = val;
+            document.getElementById('compteur').innerHTML = val;
         }
 
         // Fonction de gestion du clic sur "Cliquer"
