@@ -75,7 +75,7 @@
         let counterVal = 0;
         // Fonction pour mettre à jour l'affichage
         function updateDisplay(val) {
-            document.getElementById('compteur').innerHTML = val;
+            //document.getElementById('compteur').innerHTML = val;
         }
 
         // Fonction de gestion du clic sur "Cliquer"
@@ -86,6 +86,18 @@
                 L.marker([demo[indice]["coordonnee_x"], demo[indice]["coordonnee_y"]]).addTo(map)
                     .bindPopup(demo[indice]["resume"])
                     .openPopup();
+
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        console.log("test");
+                        console.log(this.responseText);
+
+                        //document.getElementById("txtHint").innerHTML = this.responseText;
+                    }
+                };
+                xmlhttp.open("GET", "save.php?nb_clique=" + counterVal, true);
+                xmlhttp.send();
             }
             updateDisplay(counterVal);
 
