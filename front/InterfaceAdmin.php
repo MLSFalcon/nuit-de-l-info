@@ -1,4 +1,9 @@
-
+<?php
+session_start();
+if (!isset($_SESSION['id_admin'])){
+    header("location:index.html");
+}
+?>
 <form method="post" action="InterfaceAdmin.php">
     <input type="submit" name=ajouter value="Ajouter">
 </form>
@@ -20,8 +25,6 @@ if (isset($_POST['ajouter'])){
     </form>
     <?php
 }
-
-session_start();
 $bdd = new PDO('mysql:host=isp.seblemoine.fr;dbname=bdd_chargpt', 'bdd_chatgpt', 'ySdf94kAM@');
 
 
