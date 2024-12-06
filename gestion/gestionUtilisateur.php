@@ -1,4 +1,5 @@
 <?php
+session_start();
 $bdd = new PDO('mysql:host=isp.seblemoine.fr;dbname=bdd_chargpt', 'bdd_chatgpt', 'ySdf94kAM@');
 $req = $bdd->prepare('SELECT * FROM Utilisateur');
 $req->execute();
@@ -17,7 +18,7 @@ if($existe == 1){
     $donnee = $req->fetchAll();
     $_SESSION['id_user'] = $donnee[0]['id_user'];
     $_SESSION['nb_clique'] = 0;
-    header('location:../front/map.php');
+    header('location: ../front/map.php');
 }else{
     $req = $bdd->prepare('INSERT INTO Utilisateur(pseudo_user,nb_clique) VALUES(:pseudo_user,:nb_clique)');
     $req->execute(array(
@@ -34,7 +35,7 @@ if($existe == 1){
     $donnee = $req->fetchAll();
     $_SESSION['id_user'] = $donnee[0]['id_user'];
     $_SESSION['nb_clique'] = 0;
-    header('location:../front/map.php');
+    header('location: ../front/map.php');
 }
 
 
