@@ -42,26 +42,29 @@ session_start();
                 'ref_user' => $_SESSION['id_user'],
             ]);
             $donnee = $req->fetchAll();
-            ?>
 
+
+        ?>
+<div width="50px">
             <?php
             foreach ($donnee as $donnee1) {
                 echo "<form action='../gestion/gestionReponse.php' method='POST'>";
                 echo "<label for='$donnee1[Question]'>$donnee1[Question]</label>";
                 echo "<input type='text' name='reponse' id='$donnee1[Question]'>";
                 echo "<input type='hidden' name='id_questionnaire' value='$donnee1[id_questionnaire]'>";
-                echo "<input type='submit' name='Valider' value='Valider'>'";
+                echo "<input type='submit' name='Valider' value='Valider'>";
                 echo "</form>";
             }
             ?>
-            <br><hr>
-            <form action=".././gestion/gestionDeconnexion.php">
-                <input class="align-bottom" type="submit" name="deconnexion" value="Se déconnecter">
-            </form>
-        </div>
+    <br><hr>
+    <form action=".././gestion/gestionDeconnexion.php">
+        <input class="align-bottom" type="submit" name="deconnexion" value="Se déconnecter">
+    </form>
+</div>
     </div>
-    <div id="modal">
-    </div>
+</div>
+<div id="modal">
+</div>
 
     <center>
 
