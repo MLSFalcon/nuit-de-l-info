@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['id_admin'])){
-    header("location:index.html");
+    header("location:index.php");
 }
 ?>
 <form method="post" action="InterfaceAdmin.php">
