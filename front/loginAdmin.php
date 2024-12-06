@@ -8,7 +8,7 @@
 <body>
 <video class="video-background" autoplay playsinline muted loop>
     <source src="https://storage.coverr.co/videos/7RzPQrmB00s01rknm8VJnXahEyCy4024IMG?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6Ijg3NjdFMzIzRjlGQzEzN0E4QTAyIiwiaWF0IjoxNjI5MTg2NjA0fQ.M8oElp5VNO8bWEWmdF2nGiu3qDOOYRFfP8wkKvl8I20" type="video/mp4">
-    Votre navigateur ne supporte pas la vidéo HTML5.
+    Votre navigateur ne supporte pas la vidéo HTML5.²
 </video>
 
 <div class="content">
