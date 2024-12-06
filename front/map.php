@@ -1,3 +1,7 @@
+<?php
+session_start();
+
+?>
 <!DOCTYPE html>
 <html lang="fr" onclick="toucheClick()" style="height: 100%">
 <head>
@@ -68,14 +72,17 @@
         var demo = `<?= json_encode($resultPos)?>`;
 
         demo = JSON.parse(demo);
-        indice = 0;
-        L.marker([demo[indice]["coordonnee_x"], demo[indice]["coordonnee_y"]]).addTo(map)
-            .bindPopup(demo[indice]["resume"])
-            .openPopup();
-        let counterVal = 0;
+        indice = <?=$_SESSION["nb_clique"]/10?>;
+        for (i = 0 ; i <= indice ; i++){
+            L.marker([demo[i]["coordonnee_x"], demo[i]["coordonnee_y"]]).addTo(map)
+                .bindPopup(demo[i]["resume"])
+                .openPopup();
+        }
+
+        let counterVal = <?=$_SESSION["nb_clique"]?>;
         // Fonction pour mettre à jour l'affichage
         function updateDisplay(val) {
-            document.getElementById('compteur').innerHTML = val;
+            //document.getElementById('compteur').innerHTML = val;
         }
 
         // Fonction de gestion du clic sur "Cliquer"
@@ -86,6 +93,18 @@
                 L.marker([demo[indice]["coordonnee_x"], demo[indice]["coordonnee_y"]]).addTo(map)
                     .bindPopup(demo[indice]["resume"])
                     .openPopup();
+
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        console.log("test");
+                        console.log(this.responseText);
+
+                        //document.getElementById("txtHint").innerHTML = this.responseText;
+                    }
+                };
+                xmlhttp.open("GET", "save.php?nb_clique=" + counterVal, true);
+                xmlhttp.send();
             }
             updateDisplay(counterVal);
 

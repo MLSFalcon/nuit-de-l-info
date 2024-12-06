@@ -1,16 +1,21 @@
 <?php
 session_start();
+
+
 if (!isset($_SESSION['id_admin'])){
-    header("location:index.php");
+    header("location:index.html");
 }
 ?>
+<head>
+    <link rel="stylesheet" href="../css/interfaceAdmin.css">
+</head>
 <form method="post" action="InterfaceAdmin.php">
     <input type="submit" name=ajouter value="Ajouter">
 </form>
 
 <?php
 if (isset($_GET['Ajout'])) {
- echo $_GET['Ajout'];
+    echo $_GET['Ajout'];
 }
 ?>
 
@@ -18,6 +23,7 @@ if (isset($_GET['Ajout'])) {
 if (isset($_POST['ajouter'])){
     ?>
     <form action=".././gestion/gestionAjoutDePoint.php" method="post">
+        <label>Titre<input type="text" name="titre" required></label>
         <label>Position X<input type="number" name="posX" required step="any"></label>
         <label>Position Y<input type="number" name="posY" required step="any"></label>
         <label><textarea name="resume"></textarea></label>
@@ -33,11 +39,14 @@ $requete->execute();
 $liste = $requete->fetchAll();
 $requete->closeCursor();
 
+
+
 ?>
 <table id= "example" border="1">
 
     <thead>
     <tr>
+        <td>Titre</td>
         <td>Coordonée</td>
         <td>Résumé</td>
         <td>Action</td>
@@ -49,6 +58,9 @@ $requete->closeCursor();
         ?>
         <tr>
             <td>
+                <?= $liste[$i]['titre']?>
+            </td>
+            <td>
                 <?= $liste[$i]['coordonnee_x']," / ",$liste[$i]['coordonnee_y']?>
             </td>
             <td>
@@ -59,10 +71,10 @@ $requete->closeCursor();
                     <input type="hidden" name="lieu" value=<?= $liste[$i][0] ?>>
                     <input type="submit" value="modifier" name="modifier">
                 </form>
-                    <form action="../gestion/gestionSuppression.php" method="post">
-                        <input type="hidden" name="lieu" value="<?= $liste[$i][0] ?>">
-                        <input type="submit" value="supprimer">
-                    </form>
+                <form action="../gestion/gestionSuppression.php" method="post">
+                    <input type="hidden" name="lieu" value="<?= $liste[$i][0] ?>">
+                    <input type="submit" value="supprimer">
+                </form>
             </td>
         </tr>
         <?php
@@ -83,6 +95,10 @@ if (isset($_POST['modifier'])){
     <table>
         <form action="../gestion/gestionModification.php" method="post">
             <input type="hidden" name="id_lieu" value="<?= $info['id_lieu'] ?>">
+            <tr>
+                <td><label for="titre"></label>titre :</td>
+                <td><input type="text" id="titre" required name="titre" value=<?=$info['titre']?>></td>
+            </tr>
             <tr>
                 <td><label for="coordonnee_x"></label>coordonnee_x :</td>
                 <td><input type="text" id="coordonnee_x" required name="coordonnee_x" value=<?=$info['coordonnee_x']?>></td>
@@ -114,4 +130,3 @@ if (isset($_POST['modifier'])){
         responsive: true
     });
 </script>
-

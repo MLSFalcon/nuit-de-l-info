@@ -7,10 +7,14 @@ L'utilisateur doit cliquer afin d'avancer dans l'histoire du monde océanique. I
 Dans une optique de maintenir cette application constamment à jour, et la plus pertinente possible, nous avons implémenté la possibilité d'ajouter, de modifier et de supprimer les différents points d'interêts sur la carte océanique par un administrateur.
 Avec une idée de rassembler et d'unir les communautés, la page d'accueil rend hommage aux utilisateurs ayant débloqué l'intégralité des zones sur la carte à travers un compteur indiquant le nombre de personnes ayant atteint "la fin" de l'application. En arrière plan, on peut aussi appercevoir les pseudonymes des derniers ayant complété le jeu.
 
+Ce projet reste avant tout un concept qui peut grandement être améliorer avec plus de temps de travail mais aussi de réflexion.
+
 Les Fonctionnalité disponible en résumer :
 - carte interactive
-- 
+- zones descriptives des différentes problématiques océaniques
+- systeme de points par clique qui débloque les zones
 
 Idées d'améliorations : 
-- support téléphone
+- support téléphone/tablette
+- amélioration de l'UX
 - 
