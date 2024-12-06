@@ -42,19 +42,20 @@ session_start();
         $req = $bdd->prepare('SELECT * FROM Questionnaire');
         $req->execute();
         $donnee = $req->fetchAll();
-        ?>
 
+        ?>
+<div width="50px">
             <?php
             foreach ($donnee as $donnee1) {
                 echo "<form action='../gestion/gestionReponse.php' method='POST'>";
                 echo "<label for='$donnee1[Question]'>$donnee1[Question]</label>";
                 echo "<input type='text' name='$donnee1[Question]' id='$donnee1[Question]'>";
                 echo "<input type='hidden' name='id_questionnaire' value='$donnee1[id_questionnaire]'>";
-                echo "<input type='submit' name='Valider' value='Valider'>'";
+                echo "<input type='submit' name='Valider' value='Valider'>";
                 echo "</form>";
             }
             ?>
-
+</div>
     </div>
 </div>
 <div id="modal">
