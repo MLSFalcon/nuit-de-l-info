@@ -1,5 +1,9 @@
 LA NUIT DE L'INFO 2024
 
+
+
+
+
 L'objectif principal de cette nuit est de créer une application éducative. Elle sera simple d'utilisation et assez interractive afin de maintenir l'interêt de l'utilisateur suffisament longtemps. L'objectif principal est de le faire ressortir de cette expérience avec de nouvelles connaissances et une sensibilité accrue aux problématiques de protection des océeans.
 
 Afin de répondre de manière optimale, nous avons imaginé une carte du monde interractive. Elle permettra aux utilisateurs à travers un simple jeu, de découvrir pas à pas l'ensemble des "organes" de l'océan. 
