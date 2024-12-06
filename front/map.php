@@ -37,13 +37,28 @@ session_start();
         <form action=".././gestion/gestionDeconnexion.php">
             <input class="align-bottom" type="submit" name="deconnexion" value="Se déconnecter">
         </form>
+        <?php
+        $bdd = new PDO('mysql:host=isp.seblemoine.fr;dbname=bdd_chargpt', 'bdd_chatgpt', 'ySdf94kAM@');
+        $req = $bdd->prepare('SELECT * FROM Questionnaire');
+        $req->execute();
+        $donnee = $req->fetchAll();
+        ?>
+        
+            <?php
+            foreach ($donnee as $donnee1) {
+                echo "<form action='../gestion/gestionReponse.php' method='POST'>";
+                echo "<label for='$donnee1[Question]'>$donnee1[Question]</label>";
+                echo "<input type='text' name='$donnee1[Question]' id='$donnee1[Question]'>";
+                echo "<input type='hidden' name='id_questionnaire' value='$donnee1[id_questionnaire]'>";
+                echo "<input type='submit' name='Valider' value='Valider'>'";
+                echo "</form>";
+            }
+            ?>
 
     </div>
 </div>
 
 
-<div>
-</div>
 
 <center>
 
@@ -123,6 +138,7 @@ session_start();
 
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
 </body>
 </html>
 <?php
