@@ -10,14 +10,6 @@ for ($i = 0; $i < count($email); $i++) {
     }
 }
 if($existe == 1){
-    $req = $bdd->prepare('INSERT INTO Utilisateur(pseudo_user,nb_clique) VALUES(:pseudo_user,:nb_clique)');
-    $req->execute(array(
-        'pseudo_user' => $_POST['pseudo_user'],
-        'nb_clique' => 0
-    ));
-
-    $req->closeCursor();
-
     $req = $bdd->prepare('SELECT * FROM Utilisateur WHERE pseudo_user = :pseudo');
     $req->execute(array(
         'pseudo' => $_POST['pseudo_user']
@@ -27,6 +19,14 @@ if($existe == 1){
     $_SESSION['nb_clique'] = 0;
     header('location:../front/map.php');
 }else{
+    $req = $bdd->prepare('INSERT INTO Utilisateur(pseudo_user,nb_clique) VALUES(:pseudo_user,:nb_clique)');
+    $req->execute(array(
+        'pseudo_user' => $_POST['pseudo_user'],
+        'nb_clique' => 0
+    ));
+
+    $req->closeCursor();
+
     $req = $bdd->prepare('SELECT * FROM Utilisateur WHERE pseudo_user = :pseudo');
     $req->execute(array(
         'pseudo' => $_POST['pseudo_user']
