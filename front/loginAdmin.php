@@ -26,6 +26,6 @@ if (isset($_GET['erreur'])){
         </tr>
 </table>
 </form>
-<a href="index.html"><input class="deA" type="submit" value="utilisateur"></a>
+<a href="index.php"><input class="deA" type="submit" value="utilisateur"></a>
 </body>
 </html>

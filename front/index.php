@@ -19,14 +19,19 @@
 <div class="content">
     <div class="form-container">
      <h2> <div class="h2o"> RACE4WATER</div></h2>
-        <form action="loginAdmin.html" method="post">
+        <form action="../gestion/gestionUtilisateur.php" method="post">
             <div class="mb-3">
-                <label for="prenom" class="form-label">Pseudo</label>
-                <input type="text" name="prenom" id="prenom" class="form-control">
+                <label for="pseudo_user" class="form-label">Pseudo</label>
+                <input type="text" name="pseudo_user" id="pseudo_user" required class="form-control">
             </div>
             <div class="d-grid gap-2">
-                <button type="submit" class="btn btn-primary">Jouer</button>
-                <button type="submit" class="btn btn-secondary">Connexion admin</button>
+                <button type="submit" name="Jouer" class="btn btn-primary">Jouer</button>
+
+            </div>
+        </form>
+        <form action="loginAdmin.php" method="post">
+            <div class="d-grid gap-2">
+                <button type="submit" name="admin" class="btn btn-secondary">Connexion admin</button>
             </div>
         </form>
     </div>
