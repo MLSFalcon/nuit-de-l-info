@@ -1,6 +1,9 @@
 LA NUIT DE L'INFO 2024
 
 Lien du site déployé : https://chatgpt.seblemoine.fr/
+Compte admin : 
+    login : mateo 
+    mdp : 1
 
 La problématique de cette nuit est de créer une application éducative. Elle sera simple d'utilisation et assez interractive afin de maintenir l'interêt de l'utilisateur suffisament longtemps. L'objectif principal est de le faire ressortir de cette expérience avec de nouvelles connaissances et une sensibilité accrue aux problématiques de protection des océeans.
 
@@ -16,7 +19,7 @@ Les Fonctionnalité disponible en résumer :
 - zones descriptives des différentes problématiques océaniques
 - systeme de points par clique qui débloque les zones
 - questionnaires en rapport avec les lieux qui donnent des points bonus
-- Codes QR menant à des vidéos/articles
+- codes QR menant à des vidéos/articles
 - Page admin pour ajouter, supprimer et modifier les lieux ainsi que les questions
 
 Idées d'améliorations : 
