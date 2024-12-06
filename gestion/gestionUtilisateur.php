@@ -17,7 +17,7 @@ if($existe == 1){
     ));
     $donnee = $req->fetchAll();
     $_SESSION['id_user'] = $donnee[0]['id_user'];
-    $_SESSION['nb_clique'] = 0;
+    $_SESSION['nb_clique'] = $donnee[0]['nb_clique'];
     header('location: ../front/map.php');
 }else{
     $req = $bdd->prepare('INSERT INTO Utilisateur(pseudo_user,nb_clique) VALUES(:pseudo_user,:nb_clique)');
