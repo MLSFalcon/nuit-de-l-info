@@ -27,6 +27,7 @@ if (isset($_POST['ajouter'])){
         <label>Position X<input type="number" name="posX" required step="any"></label>
         <label>Position Y<input type="number" name="posY" required step="any"></label>
         <label><textarea name="resume"></textarea></label>
+        <label>inserer le lien du QR code<input type="text" name="qr_code"></label>
         <input type="submit" name="confirmer" value="ConfirmerAjout">
     </form>
     <?php
@@ -39,6 +40,10 @@ $requete->execute();
 $liste = $requete->fetchAll();
 $requete->closeCursor();
 
+$requete = $bdd->prepare('SELECT * FROM Questionnaire');
+$requete->execute();
+$listeQuestion = $requete->fetchAll();
+$requete->closeCursor();
 
 
 ?>
@@ -49,6 +54,7 @@ $requete->closeCursor();
         <td>Titre</td>
         <td>Coordonée</td>
         <td>Résumé</td>
+        <td>QR code</td>
         <td>Action</td>
     </tr>
     </thead>
@@ -65,6 +71,9 @@ $requete->closeCursor();
             </td>
             <td>
                 <?= $liste[$i]['resume']?>
+            </td>
+            <td>
+                <img src="<?= $liste[$i]['qr_code']?>" width="200px">
             </td>
             <td>
                 <form action="InterfaceAdmin.php" method="post">
@@ -112,11 +121,55 @@ if (isset($_POST['modifier'])){
                 <td><textarea name="resume" id="resume" rows="20px" cols="100px" ><?=$info['resume']?></textarea> </td>
             </tr>
             <tr>
+                <td><label for="qr_code">lien Qr code : </label></td>
+                <td><input type="text" id="qr_code" required name="qr_code" value=<?=$info['qr_code']?>></td>
+            </tr>
+            <tr>
                 <td><input type="submit" name="modifier" value="confirmer"></td>
             </tr>
         </form>
     </table>
 <?php } ?>
+
+<table id= "example" border="1">
+
+    <thead>
+    <tr>
+        <td>Question</td>
+        <td>Reponse</td>
+        <td>Action</td>
+    </tr>
+    </thead>
+    <tbody>
+    <?php
+    for ($i=0; $i < count($listeQuestion); $i++) {
+    ?>
+    <tr>
+        <td>
+            <?= $listeQuestion[$i]['Question']?>
+        </td>
+        <td>
+            <?= $listeQuestion[$i]['reponse']?>
+        </td>
+        <td>
+            <form action="InterfaceAdmin.php" method="post">
+                <input type="hidden" name="question" value=<?= $listeQuestion[$i][0] ?>>
+                <input type="submit" value="modifierQuestion" name="modifier">
+            </form>
+            <form action="../gestion/gestionSuppression.php" method="post">
+                <input type="hidden" name="question" value="<?= $listeQuestion[$i][0] ?>">
+                <input type="submit" value="supprimer">
+            </form>
+        </td>
+    </tr>
+    <?php
+    }
+    ?>
+    </tbody>
+</table>
+
+
+
 <hr>
 <a href="../gestion/gestionDeconnexion.php">Se déconnecte</a>
 <hr>
