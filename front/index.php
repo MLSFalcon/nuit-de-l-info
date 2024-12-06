@@ -18,6 +18,7 @@
 
 <div class="content">
     <div class="form-container">
+
      <h2> <div class="h2o"> RACE4WATER</div></h2>
         <form action="../gestion/gestionUtilisateur.php" method="post">
             <div class="mb-3">
