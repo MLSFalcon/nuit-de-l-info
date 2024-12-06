@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" onclick="toucheClick()" style="height: 100%">
 <head>
     <meta charset="UTF-8">
     <title>Race 4 Water</title>
@@ -14,49 +14,95 @@
     <link href="../css/map.css" rel="stylesheet">
 
 </head>
-<body>
+<body class="container-fluid" style="height: 100%">
+<div class="row" style="height: 100%">
+    <div class="col-sm-9" >
+        <div id="map" style="width: 100%; height: 100%; display: inline-block;">    </div>
+    </div>
 
-<div id="map" style="width: 100%; height: 100%">
+    <div class="col-sm-3">
+        <div id="demo" onclick="if (counterVal%10 === 0){reload(truc)}">
+            Cliquer
+        </div>
+        <button id="reset">
+            Reset
+        </button>
+
+
+
+
+
+    </div>
 </div>
-<script
-        src="https://code.jquery.com/jquery-3.7.1.min.js"
-        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
-        crossorigin="anonymous"></script>
-<script>
 
-    var map = L.map('map').setView([46.52302030397954, 6.611348944330389], 2);
 
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
+<div>
+</div>
 
-    L.marker([46.52302030397954, 6.611348944330389]).addTo(map)
-        .bindPopup('Siege de Race 4 Water')
-        .openPopup();
+<center>
 
-    <?php
-    $bdd = include '../BDD/bdd.php';
 
-    $reqPos = $bdd->prepare('SELECT * FROM Lieu');
-    $reqPos->execute();
-    $resultPos = $reqPos->fetchall();
-    ?>
-    var demo = `<?= json_encode($resultPos)?>`;
-    demo = JSON.parse(demo);
-    $( document ).ready(function() {
-        for ( i = 0 ; i < demo.length ; i ++ ){
-           console.log(demo[i])
-            L.marker([demo[i]["coordonnee_x"], demo[i]["coordonnee_y"]]).addTo(map)
-                .bindPopup(demo[i]["resume"])
-                .openPopup();
+    <script
+            src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"></script>
+    <script>
+
+        var map = L.map('map').setView([46.52302030397954, 6.611348944330389], 3);
+
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+            noWrap: true,
+            minZoom: 0,
+        }).addTo(map);
+
+
+        <?php
+        $bdd = include '../BDD/bdd.php';
+
+        $reqPos = $bdd->prepare('SELECT * FROM Lieu');
+        $reqPos->execute();
+        $resultPos = $reqPos->fetchall();
+        ?>
+
+        var demo = `<?= json_encode($resultPos)?>`;
+
+        demo = JSON.parse(demo);
+        indice = 0;
+        L.marker([demo[indice]["coordonnee_x"], demo[indice]["coordonnee_y"]]).addTo(map)
+            .bindPopup(demo[indice]["resume"])
+            .openPopup();
+        let counterVal = 0;
+        // Fonction pour mettre à jour l'affichage
+        function updateDisplay(val) {
+            document.getElementById('compteur').innerHTML = val;
         }
-    });
 
-    
+        // Fonction de gestion du clic sur "Cliquer"
+        function toucheClick() {
+            counterVal++;
+            if(counterVal%10 == 0){
+                indice++
+                L.marker([demo[indice]["coordonnee_x"], demo[indice]["coordonnee_y"]]).addTo(map)
+                    .bindPopup(demo[indice]["resume"])
+                    .openPopup();
+            }
+            updateDisplay(counterVal);
 
+        }
 
-</script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+        // Fonction pour réinitialiser le compteur
+        function resetClick() {
+            counterVal = 0;
+            updateDisplay(counterVal);
+        }
+
+        // Attacher les événements aux éléments
+        document.getElementById('demo').addEventListener('click', toucheClick);
+        document.getElementById('reset').addEventListener('click', resetClick);
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
 <?php
