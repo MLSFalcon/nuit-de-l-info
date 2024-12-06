@@ -12,9 +12,9 @@ if (isset($_POST['lieu'])) {
 }
 
 if (isset($_POST['question'])) {
-    $question = $_POST['lieu'];
+    $question = $_POST['question'];
 
-    $requete = $bdd->prepare('DELETE FROM Questionnaire WHERE id_lieu = :question ');
+    $requete = $bdd->prepare('DELETE FROM Questionnaire WHERE id_questionnaire = :question ');
     $requete->execute(array(
         'question' => $question
     ));
