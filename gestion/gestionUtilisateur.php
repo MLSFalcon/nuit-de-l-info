@@ -2,10 +2,10 @@
 $bdd = new PDO('mysql:host=isp.seblemoine.fr;dbname=bdd_chargpt', 'bdd_chatgpt', 'ySdf94kAM@');
 $req = $bdd->prepare('SELECT * FROM Utilisateur');
 $req->execute();
-$email = $req->fetchAll();
+$donnee = $req->fetchAll();
 $existe = 0;
-for ($i = 0; $i < count($email); $i++) {
-    if ($email[$i]['email'] == $_POST['pseudo_user']) {
+for ($i = 0; $i < count($donnee); $i++) {
+    if ($donnee[$i]['pseudo_user'] == $_POST['pseudo_user']) {
         $existe = 1;
     }
 }
