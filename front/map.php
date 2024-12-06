@@ -24,7 +24,7 @@ session_start();
         <div id="map" style="width: 100%; height: 100%; display: inline-block;">    </div>
     </div>
 
-    <div class="col-sm-3">
+    <div class="col-sm-3 text-center" style="height: 100px">
 
         <div id="demo" class="text-center"  onclick="if (counterVal%10 === 0){reload(truc)}">
             Cliquez n'importe où sur l'écran
@@ -33,6 +33,11 @@ session_start();
             <center><h3 class="container-fluid"  id="compteur">0</h3></center>
         </div>
         <hr>
+
+        <form action=".././gestion/gestionDeconnexion.php">
+            <input class="align-bottom" type="submit" name="deconnexion" value="Se déconnecter">
+        </form>
+
     </div>
 </div>
 
