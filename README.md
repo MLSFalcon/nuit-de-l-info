@@ -1,6 +1,8 @@
 LA NUIT DE L'INFO 2024
 
-L'objectif principal de cette nuit est de créer une application éducative. Elle sera simple d'utilisation et assez interractive afin de maintenir l'interêt de l'utilisateur suffisament longtemps. L'objectif principal est de le faire ressortir de cette expérience avec de nouvelles connaissances et une sensibilité accrue aux problématiques de protection des océeans.
+Lien du site déployé : https://chatgpt.seblemoine.fr/
+
+La problématique de cette nuit est de créer une application éducative. Elle sera simple d'utilisation et assez interractive afin de maintenir l'interêt de l'utilisateur suffisament longtemps. L'objectif principal est de le faire ressortir de cette expérience avec de nouvelles connaissances et une sensibilité accrue aux problématiques de protection des océeans.
 
 Afin de répondre de manière optimale, nous avons imaginé une carte du monde interractive. Elle permettra aux utilisateurs à travers un simple jeu, de découvrir pas à pas l'ensemble des "organes" de l'océan. 
 L'utilisateur doit cliquer afin d'avancer dans l'histoire du monde océanique. Il peut aussi répondre à des questionnaires basés sur des articles disséminés sur la carte du monde pour gagner des sommes de points plus conséquentes accélérant leurs progressions.
@@ -13,8 +15,11 @@ Les Fonctionnalité disponible en résumer :
 - carte interactive
 - zones descriptives des différentes problématiques océaniques
 - systeme de points par clique qui débloque les zones
+- questionnaires en rapport avec les lieux qui donnent des points bonus
+- Codes QR menant à des vidéos/articles
+- Page admin pour ajouter, supprimer et modifier les lieux ainsi que les questions
 
 Idées d'améliorations : 
 - support téléphone/tablette
 - amélioration de l'UX
-- 
+- Ajout des pistes audios/Podcast jouable sur les zones 

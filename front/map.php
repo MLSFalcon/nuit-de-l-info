@@ -43,7 +43,7 @@ session_start();
         $req->execute();
         $donnee = $req->fetchAll();
         ?>
-        
+
             <?php
             foreach ($donnee as $donnee1) {
                 echo "<form action='../gestion/gestionReponse.php' method='POST'>";
@@ -57,8 +57,8 @@ session_start();
 
     </div>
 </div>
-
-
+<div id="modal">
+</div>
 
 <center>
 
@@ -88,14 +88,37 @@ session_start();
         var demo = `<?= json_encode($resultPos)?>`;
 
         demo = JSON.parse(demo);
-        indice = <?=$_SESSION["nb_clique"]/10?>;
+        var modalC = document.getElementById("modal");
+        for (i = 0 ; i < demo.length ; i++){
+            console.log(demo[i])
+            modalC.innerHTML += `<!-- Modal -->
+<div class="modal fade" id="demo_`+i+`" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">`+ demo[i]["titre"] +`</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>`+ demo[i]["resume"] +`</p>
+        <img src="`+ demo[i]["qr_code"] +`">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>`
+        }
+        indice = <?=(isset($_SESSION["nb_clique"]))? $_SESSION["nb_clique"]/10 : 0?>;
         for (i = 0 ; i <= indice ; i++){
             L.marker([demo[i]["coordonnee_x"], demo[i]["coordonnee_y"]]).addTo(map)
-                .bindPopup(demo[i]["resume"])
+                // .bindPopup(demo[i]["titre"]+'<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#demo_'+i +'">Launch demo modal </button>')
+                .bindPopup("<a href='#' data-bs-toggle='modal' data-bs-target='#demo_"+ i +"'  >"+ demo[i]["titre"] +"</a>")
                 .openPopup();
         }
+        let counterVal = <?=(isset($_SESSION["nb_clique"]))? $_SESSION["nb_clique"] : 0?>;
 
-        let counterVal = <?=$_SESSION["nb_clique"]?>;
         // Fonction pour mettre à jour l'affichage
         function updateDisplay(val) {
             document.getElementById('compteur').innerHTML = val;
@@ -107,7 +130,8 @@ session_start();
             if(counterVal%10 == 0){
                 indice++
                 L.marker([demo[indice]["coordonnee_x"], demo[indice]["coordonnee_y"]]).addTo(map)
-                    .bindPopup(demo[indice]["resume"])
+                    .bindPopup("<a href='#' data-bs-toggle='modal' data-bs-target='#demo_"+ indice +"'  >"+ demo[indice]["titre"] +"</a>")
+                    // .bindPopup(demo[indice]["titre"]+'<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#demo_'+indice +'">Launch demo modal </button>')
                     .openPopup();
 
                 var xmlhttp = new XMLHttpRequest();
