@@ -13,8 +13,11 @@ Les Fonctionnalité disponible en résumer :
 - carte interactive
 - zones descriptives des différentes problématiques océaniques
 - systeme de points par clique qui débloque les zones
+- questionnaires en rapport avec les lieux qui donnent des points bonus
+- Codes QR menant à des vidéos/articles
+- Page admin pour ajouter, supprimer et modifier les lieux ainsi que les questions
 
 Idées d'améliorations : 
 - support téléphone/tablette
 - amélioration de l'UX
-- 
+- Ajout des pistes audios/Podcast jouable sur les zones 
