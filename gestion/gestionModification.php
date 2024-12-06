@@ -10,4 +10,11 @@ if(isset($_POST['modifier'])) {
         'resume' => $_POST['resume']
     ));
 }
+if (isset($_POST['modifierQuestion'])) {
+    $requete = $bdd->prepare('UPDATE Questionnaire SET Question =:question, reponse = :reponse');
+    $requete->execute(array(
+        'question' => $_POST['question'],
+        'reponse' => $_POST['reponse']
+    ));
+}
 header("location:../front/InterfaceAdmin");

@@ -39,6 +39,10 @@ $requete->execute();
 $liste = $requete->fetchAll();
 $requete->closeCursor();
 
+$requete = $bdd->prepare('SELECT * FROM Questionnaire');
+$requete->execute();
+$listeQuestion = $requete->fetchAll();
+$requete->closeCursor();
 
 
 ?>
@@ -117,6 +121,46 @@ if (isset($_POST['modifier'])){
         </form>
     </table>
 <?php } ?>
+
+<table id= "example" border="1">
+
+    <thead>
+    <tr>
+        <td>Question</td>
+        <td>Reponse</td>
+        <td>Action</td>
+    </tr>
+    </thead>
+    <tbody>
+    <?php
+    for ($i=0; $i < count($listeQuestion); $i++) {
+    ?>
+    <tr>
+        <td>
+            <?= $listeQuestion[$i]['Question']?>
+        </td>
+        <td>
+            <?= $listeQuestion[$i]['reponse']?>
+        </td>
+        <td>
+            <form action="InterfaceAdmin.php" method="post">
+                <input type="hidden" name="question" value=<?= $listeQuestion[$i][0] ?>>
+                <input type="submit" value="modifierQuestion" name="modifier">
+            </form>
+            <form action="../gestion/gestionSuppression.php" method="post">
+                <input type="hidden" name="question" value="<?= $listeQuestion[$i][0] ?>">
+                <input type="submit" value="supprimer">
+            </form>
+        </td>
+    </tr>
+    <?php
+    }
+    ?>
+    </tbody>
+</table>
+
+
+
 <hr>
 <a href="../gestion/gestionDeconnexion.php">Se déconnecte</a>
 <hr>
