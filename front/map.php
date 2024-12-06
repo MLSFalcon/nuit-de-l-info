@@ -54,6 +54,8 @@ session_start();
                 echo "<input type='hidden' name='id_questionnaire' value='$donnee1[id_questionnaire]'>";
                 echo "<input type='submit' name='Valider' value='Valider'>";
                 echo "</form>";
+                ?><br>
+            <?php
             }
             ?>
     <br><hr>
