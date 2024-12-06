@@ -10,7 +10,7 @@ if(isset($_POST['modifier'])) {
         'resume' => $_POST['resume'],
         'qr_code' => $_POST['qr_code']
     ));
-    header("location:../front/InterfaceAdmin");
+    header("location:../front/InterfaceAdmin.php");
 }
 if (isset($_POST['modifierQuestion'])) {
     $requete = $bdd->prepare('UPDATE Questionnaire SET Question =:question, reponse = :reponse WHERE id_questionnaire =:id');
@@ -19,5 +19,5 @@ if (isset($_POST['modifierQuestion'])) {
         'question' => $_POST['question'],
         'reponse' => $_POST['reponse']
     ));
-    header("location:../front/InterfaceAdmin");
+    header("location:../front/InterfaceAdmin.php");
 }
