@@ -1,16 +1,21 @@
 <?php
 session_start();
+
+
 if (!isset($_SESSION['id_admin'])){
-    header("location:index.php");
+    header("location:index.html");
 }
 ?>
+<head>
+    <link rel="stylesheet" href="../css/interfaceAdmin.css">
+</head>
 <form method="post" action="InterfaceAdmin.php">
     <input type="submit" name=ajouter value="Ajouter">
 </form>
 
 <?php
 if (isset($_GET['Ajout'])) {
- echo $_GET['Ajout'];
+    echo $_GET['Ajout'];
 }
 ?>
 
@@ -32,6 +37,8 @@ $requete = $bdd->prepare('SELECT * FROM Lieu');
 $requete->execute();
 $liste = $requete->fetchAll();
 $requete->closeCursor();
+
+
 
 ?>
 <table id= "example" border="1">
@@ -59,10 +66,10 @@ $requete->closeCursor();
                     <input type="hidden" name="lieu" value=<?= $liste[$i][0] ?>>
                     <input type="submit" value="modifier" name="modifier">
                 </form>
-                    <form action="../gestion/gestionSuppression.php" method="post">
-                        <input type="hidden" name="lieu" value="<?= $liste[$i][0] ?>">
-                        <input type="submit" value="supprimer">
-                    </form>
+                <form action="../gestion/gestionSuppression.php" method="post">
+                    <input type="hidden" name="lieu" value="<?= $liste[$i][0] ?>">
+                    <input type="submit" value="supprimer">
+                </form>
             </td>
         </tr>
         <?php
@@ -114,4 +121,3 @@ if (isset($_POST['modifier'])){
         responsive: true
     });
 </script>
-
