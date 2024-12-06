@@ -22,8 +22,8 @@
      <h2> <div class="h2o"> RACE4WATER</div></h2>
         <form action="../gestion/gestionUtilisateur.php" method="post">
             <div class="mb-3">
-                <label for="pseudo_user" class="form-label">Pseudo</label>
-                <input type="text" name="pseudo_user" id="pseudo_user" required class="form-control">
+                <label for="pseudo_user" class="form-label">Email</label>
+                <input type="email" name="pseudo_user" id="pseudo_user" required class="form-control">
             </div>
             <div class="d-grid gap-2">
                 <button type="submit" name="Jouer" class="btn btn-primary">Jouer</button>
