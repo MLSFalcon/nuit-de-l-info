@@ -18,6 +18,7 @@ if (isset($_GET['Ajout'])) {
 if (isset($_POST['ajouter'])){
     ?>
     <form action=".././gestion/gestionAjoutDePoint.php" method="post">
+        <label>Titre<input type="text" name="titre" required></label>
         <label>Position X<input type="number" name="posX" required step="any"></label>
         <label>Position Y<input type="number" name="posY" required step="any"></label>
         <label><textarea name="resume"></textarea></label>
@@ -38,6 +39,7 @@ $requete->closeCursor();
 
     <thead>
     <tr>
+        <td>Titre</td>
         <td>Coordonée</td>
         <td>Résumé</td>
         <td>Action</td>
@@ -48,6 +50,9 @@ $requete->closeCursor();
     for ($i=0; $i < count($liste); $i++) {
         ?>
         <tr>
+            <td>
+                <?= $liste[$i]['titre']?>
+            </td>
             <td>
                 <?= $liste[$i]['coordonnee_x']," / ",$liste[$i]['coordonnee_y']?>
             </td>
@@ -83,6 +88,10 @@ if (isset($_POST['modifier'])){
     <table>
         <form action="../gestion/gestionModification.php" method="post">
             <input type="hidden" name="id_lieu" value="<?= $info['id_lieu'] ?>">
+            <tr>
+                <td><label for="titre"></label>titre :</td>
+                <td><input type="text" id="titre" required name="titre" value=<?=$info['titre']?>></td>
+            </tr>
             <tr>
                 <td><label for="coordonnee_x"></label>coordonnee_x :</td>
                 <td><input type="text" id="coordonnee_x" required name="coordonnee_x" value=<?=$info['coordonnee_x']?>></td>
